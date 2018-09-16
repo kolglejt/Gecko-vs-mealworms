@@ -1,23 +1,49 @@
 {
-  "name": "furry_game",
+
+  "name": "gecko_game",
+
   "version": "1.0.0",
-  "description": "\"\"",
-  "main": "app.js",
+
+  "description": "",
+
+  "main": "js/app.js",
+
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+
+    "dev": "webpack --mode development --watch",
+
+    "prod": "webpack --mode production"
+
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/kolglejt/WAR_FER_S_38_REACT_Furry_Game.git"
-  },
-  "author": "Ola Pochec",
+
+  "keywords": [],
+
+  "author": "",
+
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/kolglejt/WAR_FER_S_38_REACT_Furry_Game/issues"
-  },
-  "homepage": "https://github.com/kolglejt/WAR_FER_S_38_REACT_Furry_Game#readme",
+
   "devDependencies": {
+
+    "babel-core": "^6.26.3",
+
+    "babel-loader": "^7.1.5",
+
+    "babel-preset-env": "^1.7.0",
+
+    "css-loader": "^1.0.0",
+
+    "node-sass": "^4.9.2",
+
+    "sass-loader": "^7.1.0",
+
+    "style-loader": "^0.22.0",
+
     "webpack": "^4.16.5",
-    "webpack-cli": "^2.1.5"
+
+    "webpack-cli": "^3.1.0"
+
   }
+
 }
+
+

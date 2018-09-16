@@ -1,1 +1,245 @@
-!function(r){var t={};function i(e){if(t[e])return t[e].exports;var n=t[e]={i:e,l:!1,exports:{}};return r[e].call(n.exports,n,n.exports,i),n.l=!0,n.exports}i.m=r,i.c=t,i.d=function(r,t,e){i.o(r,t)||Object.defineProperty(r,t,{enumerable:!0,get:e})},i.r=function(r){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(r,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(r,"__esModule",{value:!0})},i.t=function(r,t){if(1&t&&(r=i(r)),8&t)return r;if(4&t&&"object"==typeof r&&r&&r.__esModule)return r;var e=Object.create(null);if(i.r(e),Object.defineProperty(e,"default",{enumerable:!0,value:r}),2&t&&"string"!=typeof r)for(var n in r)i.d(e,n,function(t){return r[t]}.bind(null,n));return e},i.n=function(r){var t=r&&r.__esModule?function(){return r.default}:function(){return r};return i.d(t,"a",t),t},i.o=function(r,t){return Object.prototype.hasOwnProperty.call(r,t)},i.p="",i(i.s=0)}([function(r,t){function i(r,t){this.x=Math.floor(10*Math.random()),this.y=Math.floor(10*Math.random())}var e=new function(r,t,e,n){this.board=document.querySelectorAll("#board div"),this.furry=new function(r,t,i){this.x=0,this.y=0,this.direction="right"},this.coin=new i,this.score=0,this.index=function(r,t){return r+10*t},this.showFurry=function(){this.board[this.index(this.furry.x,this.furry.y)].classList.add("furry")},this.showCoin=function(){this.board[this.index(this.coin.x,this.coin.y)].classList.add("coin")},this.startGame=function(){var r=this;this.idSetInterval=setInterval(function(){r.moveFurry()},250),r.showCoin(),r.showFurry(),r.gameOver()},this.moveFurry=function(){this.hideVisibleFurry(),"right"===this.furry.direction?this.furry.x=this.furry.x+1:"left"===this.furry.direction?this.furry.x=this.furry.x-1:"up"===this.furry.direction?this.furry.y=this.furry.y-1:"down"===this.furry.direction&&(this.furry.y=this.furry.y+1),this.gameOver(),this.checkCoinCollision(),this.showFurry(),this.turnFurry()},this.hideVisibleFurry=function(){document.querySelector(".furry").classList.remove("furry")},this.turnFurry=function(r){switch(r.which){case 37:this.furry.direction="left";break;case 39:this.furry.direction="right";break;case 38:this.furry.direction="up";break;case 40:this.furry.direction="down"}},this.checkCoinCollision=function(){var r=document.querySelector("#score div strong");if(this.furry.x===this.coin.x&&this.coin.y===this.furry.y){document.querySelector(".coin").classList.remove("coin");var t=++this.score;r.innerText=t,this.coin=new i,this.showCoin()}},this.gameOver=function(){(this.furry.x<0||this.furry.x>9||this.furry.y<0||this.furry.y>9)&&(clearInterval(this.idSetInterval),alert("Game over"),this.hideVisibleFurry())}};e.showCoin(),e.showFurry(),e.startGame(),document.addEventListener("keydown",function(r){e.turnFurry(r)})}]);
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// define __esModule on exports
+/******/ 	__webpack_require__.r = function(exports) {
+/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 		}
+/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
+/******/
+/******/ 	// create a fake namespace object
+/******/ 	// mode & 1: value is a module id, require it
+/******/ 	// mode & 2: merge all properties of value into the ns
+/******/ 	// mode & 4: return value when already ns object
+/******/ 	// mode & 8|1: behave like require
+/******/ 	__webpack_require__.t = function(value, mode) {
+/******/ 		if(mode & 1) value = __webpack_require__(value);
+/******/ 		if(mode & 8) return value;
+/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
+/******/ 		var ns = Object.create(null);
+/******/ 		__webpack_require__.r(ns);
+/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
+/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
+/******/ 		return ns;
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = "./js/app.js");
+/******/ })
+/************************************************************************/
+/******/ ({
+
+/***/ "./js/app.js":
+/*!*******************!*\
+  !*** ./js/app.js ***!
+  \*******************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+function Gecko(x, y, direction) {
+    //gecko position
+
+    this.x = 0;
+    this.y = 0;
+    this.direction = "right";
+}
+
+function Worm(x, y) {
+    //position of worm
+
+    this.x = Math.floor(Math.random() * 10);
+    this.y = Math.floor(Math.random() * 10);
+}
+
+function Game(board, gecko, worm, score) {
+
+    this.board = document.querySelectorAll("#board div");
+
+    this.gecko = new Gecko();
+
+    this.worm = new Worm();
+
+    this.score = 0;
+
+    this.index = function (x, y) {
+        return x + y * 10;
+    };
+
+    this.showGecko = function () {
+
+        this.board[this.index(this.gecko.x, this.gecko.y)].classList.add("gecko");
+    };
+
+    this.showWorm = function () {
+
+        this.board[this.index(this.worm.x, this.worm.y)].classList.add("worm");
+    };
+
+    this.startGame = function () {
+
+        var self = this;
+
+        this.idSetInterval = setInterval(function () {
+
+            self.moveGecko();
+        }, 250); // przypisanie funkcji do zmiennej by pobrac ID
+
+        self.showWorm();
+        self.showGecko();
+        self.gameOver();
+    };
+
+    this.moveGecko = function () {
+
+        var self = this;
+
+        self.hideVisibleGecko();
+
+        if (this.gecko.direction === "right") {
+            this.gecko.x = this.gecko.x + 1;
+        } else if (this.gecko.direction === "left") {
+            this.gecko.x = this.gecko.x - 1;
+        } else if (this.gecko.direction === "up") {
+            this.gecko.y = this.gecko.y - 1;
+        } else if (this.gecko.direction === "down") {
+            this.gecko.y = this.gecko.y + 1;
+        }
+
+        self.gameOver();
+        self.checkWormCollision(); // check collision with worm
+        self.showGecko();
+        self.turnGecko();
+    };
+
+    this.hideVisibleGecko = function () {
+
+        var element = document.querySelector(".gecko");
+
+        element.classList.remove("gecko");
+    };
+
+    this.turnGecko = function (event) {
+
+        switch (event.keyCode) {
+            case 37:
+                this.gecko.direction = 'left';
+                break;
+            case 39:
+                this.gecko.direction = 'right';
+                break;
+            case 38:
+                this.gecko.direction = 'up';
+                break;
+            case 40:
+                this.gecko.direction = 'down';
+                break;
+        }
+    };
+
+    this.checkWormCollision = function () {
+
+        var result = document.querySelector("#score div strong");
+
+        if (this.gecko.x === this.worm.x && this.worm.y === this.gecko.y) {
+
+            var self = this;
+
+            document.querySelector(".worm").classList.remove("worm"); // delete worm
+
+            var score = ++this.score; //+1 to score
+
+            result.innerText = score; //show score
+
+
+            this.worm = new Worm();
+            self.showWorm();
+        }
+    };
+
+    this.gameOver = function () {
+
+        if (this.gecko.x < 0 || this.gecko.x > 9 || this.gecko.y < 0 || this.gecko.y > 9) {
+
+            clearInterval(this.idSetInterval);
+
+            alert("Game over");
+
+            this.hideVisibleGecko();
+        }
+    };
+}
+
+var game = new Game();
+
+game.showWorm();
+game.showGecko();
+game.startGame();
+
+document.addEventListener("keydown", function (event) {
+    game.turnGecko(event);
+});
+
+/***/ })
+
+/******/ });
+//# sourceMappingURL=out.js.map

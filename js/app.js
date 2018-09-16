@@ -1,5 +1,5 @@
 
-function Furry(x, y, direction) { //pozycja początkowa furry
+function Gecko(x, y, direction) { //gecko position
 
     this.x = 0;
     this.y = 0;
@@ -8,20 +8,20 @@ function Furry(x, y, direction) { //pozycja początkowa furry
 
 }
 
-function Coin(x,y) { //pozycja monety na planszy
+function Worm(x,y) { //position of worm
 
     this.x = Math.floor(Math.random() * 10);
     this.y = Math.floor(Math.random() * 10);
 
 }
 
-function Game(board, furry, coin, score) {
+function Game(board, gecko, worm, score) {
 
     this.board = document.querySelectorAll("#board div");
 
-    this.furry = new Furry();
+    this.gecko = new Gecko();
 
-    this.coin = new Coin();
+    this.worm = new Worm();
 
     this.score = 0;
 
@@ -29,15 +29,15 @@ function Game(board, furry, coin, score) {
         return x + (y * 10);
     };
 
-    this.showFurry = function () {
+    this.showGecko = function () {
 
-        this.board[this.index(this.furry.x, this.furry.y)].classList.add("furry");
+        this.board[this.index(this.gecko.x, this.gecko.y)].classList.add("gecko");
 
     };
 
-    this.showCoin = function () {
+    this.showWorm = function () {
 
-        this.board[this.index(this.coin.x, this.coin.y)].classList.add("coin");
+        this.board[this.index(this.worm.x, this.worm.y)].classList.add("worm");
     };
 
     this.startGame = function () {
@@ -46,89 +46,89 @@ function Game(board, furry, coin, score) {
 
         this.idSetInterval = setInterval(function () {
 
-            self.moveFurry();
+            self.moveGecko();
         }, 250); // przypisanie funkcji do zmiennej by pobrac ID
 
-        self.showCoin();
-        self.showFurry();
+        self.showWorm();
+        self.showGecko();
         self.gameOver();
 
     };
 
-    this.moveFurry = function () {
+    this.moveGecko = function () {
 
         var self = this;
 
-        self.hideVisibleFurry();
+        self.hideVisibleGecko();
 
-        if (this.furry.direction === "right") {
-            this.furry.x = this.furry.x + 1;
+        if (this.gecko.direction === "right") {
+            this.gecko.x = this.gecko.x + 1;
         }
-        else if (this.furry.direction === "left") {
-            this.furry.x = this.furry.x - 1;
+        else if (this.gecko.direction === "left") {
+            this.gecko.x = this.gecko.x - 1;
         }
-        else if (this.furry.direction === "up") {
-            this.furry.y = this.furry.y - 1;
+        else if (this.gecko.direction === "up") {
+            this.gecko.y = this.gecko.y - 1;
         }
-        else if (this.furry.direction === "down") {
-            this.furry.y = this.furry.y + 1;
+        else if (this.gecko.direction === "down") {
+            this.gecko.y = this.gecko.y + 1;
         }
 
 
         self.gameOver();
-        self.checkCoinCollision(); // sprawdzam, czy występuje kolizja z monetą
-        self.showFurry();
-        self.turnFurry();
+        self.checkWormCollision(); // check collision with worm
+        self.showGecko();
+        self.turnGecko();
 
 
 
     };
 
-    this.hideVisibleFurry = function () {
+    this.hideVisibleGecko = function () {
 
-        var element = document.querySelector(".furry");
+        var element = document.querySelector(".gecko");
 
-        element.classList.remove("furry");
+        element.classList.remove("gecko");
     };
 
-    this.turnFurry = function (event) {
+    this.turnGecko = function (event) {
 
-        switch (event.which) {
+        switch (event.keyCode) {
             case 37:
-                this.furry.direction = 'left';
+                this.gecko.direction = 'left';
                 break;
             case 39:
-                this.furry.direction = 'right';
+                this.gecko.direction = 'right';
                 break;
             case 38:
-                this.furry.direction = 'up';
+                this.gecko.direction = 'up';
                 break;
             case 40:
-                this.furry.direction = 'down';
+                this.gecko.direction = 'down';
                 break;
         }
 
 
     };
 
-    this.checkCoinCollision = function () {
+    this.checkWormCollision = function () {
 
         var result = document.querySelector("#score div strong");
 
 
-        if ((this.furry.x === this.coin.x) && (this.coin.y === this.furry.y)) {
+        if ((this.gecko.x === this.worm.x) && (this.worm.y === this.gecko.y)) {
 
             var self = this;
 
-            document.querySelector(".coin").classList.remove("coin"); // usuwa monetę z ekranu
+            document.querySelector(".worm").classList.remove("worm"); // delete worm
 
-            var score = ++this.score; //dodaje 1 do wyniku
+            var score = ++this.score; //+1 to score
 
-            result.innerText = score; //pokazuje wynik na ekranie
+            result.innerText = score; //show score
 
 
-            this.coin = new Coin();
-            self.showCoin();
+            this.worm = new Worm();
+            self.showWorm();
 
         }
 
@@ -138,7 +138,7 @@ function Game(board, furry, coin, score) {
 
     this.gameOver = function () {
 
-        if (this.furry.x < 0 || this.furry.x > 9 || this.furry.y < 0 || this.furry.y > 9 )
+        if (this.gecko.x < 0 || this.gecko.x > 9 || this.gecko.y < 0 || this.gecko.y > 9 )
         {
 
             clearInterval(this.idSetInterval);
@@ -146,7 +146,7 @@ function Game(board, furry, coin, score) {
             alert ("Game over");
 
 
-            this.hideVisibleFurry();
+            this.hideVisibleGecko();
 
 
         }
@@ -157,10 +157,10 @@ function Game(board, furry, coin, score) {
 
 var game = new Game();
 
-game.showCoin();
-game.showFurry();
+game.showWorm();
+game.showGecko();
 game.startGame();
 
 document.addEventListener("keydown", function (event) {
-    game.turnFurry(event);
+    game.turnGecko(event);
 });
