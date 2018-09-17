@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <title>DEVOURER OF MEALWORMS</title>
     <link rel='stylesheet' href='css/style.css'>
-
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -17,7 +17,9 @@
     </div>
   </section>
 
-
+  <audio id="audio" class="invisible" controls>
+    <source src="sounds/Untitled%201.wav" type="audio/wav">
+  </audio>
 
 
   <section id='board'>
@@ -130,6 +132,14 @@
     <h3>GAME OVER!</h3>
     <strong>Your score: <span></span></strong>
       <button id='play-again'>play again</button>
+
+      <audio id="button-click" class="invisible" controls>
+        <source src="sounds/Button_Push-Mike_Koenig-1659525069.wav" type="audio/wav">
+      </audio>
+      <audio id="end" class="invisible" controls>
+        <source src="sounds/Untitled%202.wav" type="audio/wav">
+      </audio>
+
     </div>
 
   </section>

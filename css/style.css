@@ -129,9 +129,18 @@ section#over pre {
   height: 60px;
   border-radius: 5px;
   cursor: pointer;
+
+}
+#play-again:hover {
+  border-color: green;
 }
 
 .lol {
 
   margin-top: 80px !important;
+}
+
+.color {
+
+  background: #88dba3;
 }

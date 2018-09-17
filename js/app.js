@@ -3,6 +3,13 @@ again.addEventListener('click', function () {
     window.location.reload();
 });
 
+again.addEventListener('mouseover', function () {
+
+    document.getElementById('button-click').play();
+
+});
+
+
 function Gecko(x, y, direction) { //gecko position
 
     this.x = 0;
@@ -137,7 +144,7 @@ function Game(board, gecko, worm, score) {
 
             result.innerText = score; //show score
 
-
+            document.getElementById('audio').play(); //audio
 
             this.worm = new Worm();
             self.showWorm();
@@ -152,6 +159,8 @@ function Game(board, gecko, worm, score) {
 
         if (this.gecko.x < 0 || this.gecko.x > 9 || this.gecko.y < 0 || this.gecko.y > 9 )
         {
+
+            document.getElementById('end').play();
 
            /* clearInterval(this.idSetInterval);
             alert ("Game over");
