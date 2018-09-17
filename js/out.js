@@ -96,6 +96,11 @@
 "use strict";
 
 
+var again = document.querySelector('#play-again');
+again.addEventListener('click', function () {
+    window.location.reload();
+});
+
 function Gecko(x, y, direction) {
     //gecko position
 
@@ -120,6 +125,8 @@ function Game(board, gecko, worm, score) {
     this.worm = new Worm();
 
     this.score = 0;
+
+    this.on = true;
 
     this.index = function (x, y) {
         return x + y * 10;
@@ -166,6 +173,9 @@ function Game(board, gecko, worm, score) {
         }
 
         self.gameOver();
+        if (!this.on) {
+            return;
+        }
         self.checkWormCollision(); // check collision with worm
         self.showGecko();
         self.turnGecko();
@@ -177,6 +187,10 @@ function Game(board, gecko, worm, score) {
 
         element.classList.remove("gecko");
     };
+
+    document.addEventListener('keydown', function (event) {
+        game.turnGecko(event);
+    });
 
     this.turnGecko = function (event) {
 
@@ -220,11 +234,18 @@ function Game(board, gecko, worm, score) {
 
         if (this.gecko.x < 0 || this.gecko.x > 9 || this.gecko.y < 0 || this.gecko.y > 9) {
 
+            /* clearInterval(this.idSetInterval);
+             alert ("Game over");
+             this.hideVisibleGecko();*/
+
+            var sections = document.querySelectorAll("section");
+            var scored = sections[2].querySelector("span");
+            /* sections[0].classList.add("invisible");
+             sections[1].classList.add("invisible");*/
+            sections[2].classList.add("visible");
+
+            scored.innerText = this.score;
             clearInterval(this.idSetInterval);
-
-            alert("Game over");
-
-            this.hideVisibleGecko();
         }
     };
 }

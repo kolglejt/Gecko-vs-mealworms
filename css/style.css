@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=Kosugi+Maru');
 * {
     box-sizing: border-box;
 }
@@ -5,6 +6,8 @@
 body {
     margin: 0;
     padding: 0;
+  background-color: #88dba3;
+  font-family: 'Kosugi Maru', sans-serif;
 }
 
 section#score {
@@ -14,11 +17,11 @@ section#score {
   width: 600px;
   height: 600px;
   margin: 1em auto;
-  background: white;
+  background: honeydew;
 }
 
 #board  > div {
-  border: 1px solid forestgreen;
+  border: 1.5px solid #88dba3;
   float: left;
   width: 60px;
   height: 60px;
@@ -29,8 +32,8 @@ section#score div {
   height: 3em;
   text-align: center;
   padding: 0.5em;
-  background-color: white;
-  border: 1px solid lightgray;
+  background-color: honeydew;
+  border: none;
   border-radius: 5px;
   margin: 1em auto;
 }
@@ -49,14 +52,14 @@ section#score div {
 }
 
 section#over {
+
   position: fixed;
   width: 100%;
   height: 100%;
   left: 0;
   top: 0;
   z-index: 1;
-  padding: 10px;
-  background-color: rgba(255, 255, 0, 0.75);
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 section#over pre {
@@ -70,4 +73,59 @@ section#over pre {
 
 .invisible {
   display: none;
+}
+
+.visible {
+  display: block;
+}
+
+.gameover{
+
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+}
+
+.gameover h3 {
+
+  font-size: 200px;
+  margin: 0;
+  color: snow;
+
+}
+
+.gameover strong {
+
+  font-size: 50px;
+  margin-bottom: 10px;
+  color: whitesmoke;
+
+
+}
+
+.gameover span {
+
+  font-size: 50px;
+  color: whitesmoke;
+
+}
+
+#play-again {
+
+  font-family: 'Kosugi Maru', sans-serif;
+  font-size: 20px;
+  background: white;
+  width: 170px;
+  height: 60px;
+  border-radius: 5px;
+  cursor: pointer;
 }
