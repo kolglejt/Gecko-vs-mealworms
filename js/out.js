@@ -240,8 +240,9 @@ function Game(board, gecko, worm, score) {
 
             var sections = document.querySelectorAll("section");
             var scored = sections[2].querySelector("span");
-            /* sections[0].classList.add("invisible");
-             sections[1].classList.add("invisible");*/
+            sections[0].classList.add("invisible");
+            sections[1].classList.add("visible");
+            sections[1].classList.add("lol");
             sections[2].classList.add("visible");
 
             scored.innerText = this.score;

@@ -67,6 +67,7 @@ function Game(board, gecko, worm, score) {
 
         self.hideVisibleGecko();
 
+
         if (this.gecko.direction === "right") {
             this.gecko.x = this.gecko.x + 1;
         }
@@ -137,6 +138,7 @@ function Game(board, gecko, worm, score) {
             result.innerText = score; //show score
 
 
+
             this.worm = new Worm();
             self.showWorm();
 
@@ -157,9 +159,11 @@ function Game(board, gecko, worm, score) {
 
             const sections = document.querySelectorAll("section");
             const scored = sections[2].querySelector("span");
-           /* sections[0].classList.add("invisible");
-            sections[1].classList.add("invisible");*/
+            sections[0].classList.add("invisible");
+            sections[1].classList.add("visible");
+            sections[1].classList.add("lol");
             sections[2].classList.add("visible");
+
 
             scored.innerText = this.score;
             clearInterval(this.idSetInterval);
